@@ -29,10 +29,11 @@ module.exports = {
     if (path.length === 2) {
       return module.exports.DistanceBetweenTwoPoints(path[0], path[1])
     } else if (path.length > 2) {
-      const nextPath = path.splice(0, 1)
+      const d1 = module.exports.DistanceBetweenTwoPoints(path[0], path[1])
+      path.splice(0, 1)
+      const d2 = module.exports.DistanceOfPath(path)
 
-      return module.exports.DistanceBetweenTwoPoints(path[0], path[1]) +
-              module.exports.DistanceBetweenTwoPoints(nextPath)
+      return d1 + d2
     } else {
       return 0
     }
